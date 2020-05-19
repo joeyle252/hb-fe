@@ -15,7 +15,7 @@ export default function NavBar() {
   }
 
   return (
-    <>
+    <div style={{height:"100%", width:"100%"}}>
       <Navbar bg="primary" variant="dark">
         <Navbar.Brand href="#home">Hobook</Navbar.Brand>
         <Nav className="mr-auto">
@@ -28,7 +28,7 @@ export default function NavBar() {
           <Button variant="outline-light" onClick={signIn}>Sign In</Button>
         </Form>
       </Navbar>
-    </>
+    </div>
 
   )
 }

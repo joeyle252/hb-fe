@@ -1,0 +1,30 @@
+
+.container {
+    border: 1px solid red;
+    display: grid;
+    grid-gap: 20px;
+    grid-template-columns: 1fr 4fr;
+    grid-template-areas:
+    "navbar navbar"
+    "search search"
+    "filters hotels-list"
+}
+.navbar {
+    border: 1px solid black;
+    grid-area: navbar;
+}
+
+.search {
+    border: 1px solid blue;
+    grid-area: search;
+}
+
+.filters {
+    border: 1px solid green;
+    grid-area: filters;
+}
+
+.hotels-list {
+    border: 1px solid yellow;
+    grid-area: hotels-list;
+}
