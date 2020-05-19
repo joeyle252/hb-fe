@@ -14,24 +14,36 @@ new Server({
     this.namespace = "api"
 
     this.get("/hotels", () => {
+      //name, address, star rating, photo, description, prices, available rooms
+
+      const hotels = new Array(10).fill(null).map((val, idx) => {
+        return {
+          id: idx,
+          name: "Senses Legend Hotel (Formerly Icon 36 Hotel)",
+          address: "33 Bui Thi Xuan, District 1, Ho Chi Minh City, Vietnam",
+          starRating: 3,
+          userRating: 2,
+          description: "Centrally located in Ho Chi Minh City, Icon 36 Hotel offers elegant and comfortable accommodations within 200 m from Tao Dan Park. It operates a 24-hour front desk and provides free WiFi access in the entire property.",
+          availableRooms: [
+            { type: "standard", quantity: 3, price: 5000 },
+            { type: "deluxe", quantity: 3, price: 100000 },
+          ],
+          photos: [
+            "https://q-cf.bstatic.com/images/hotel/max1024x768/761/76155687.jpg",
+            "https://r-cf.bstatic.com/images/hotel/max1024x768/757/75726481.jpg",
+          ]
+        };
+      })
       return {
-        hotels: [
-          { id: 1, name: "Hilton Ho Chi Minh", address: "Ho CHi Minh city", starRating: 4 },
-          { id: 2, name: "Hilton Ha Noi", address: "Ha Noi capital", starRating: 2 },
-          { id: 3, name: "Hilton Melbourne", address: "Melbourne", starRating: 1 },
-        ],
-      }
-    }, { timing: 3000 })
-  },
+        hotels: hotels
+      };
+    },
+      { timing: 3000 }
+    )
+  }
 })
 
-// fetch("/api/hotels")
-// .then((result)=>{
-//   console.log("result", result);
-// })
-// .catch((err)=>{
-//   console.log("err",err)
-// })
+
 
 ReactDOM.render(
   <React.StrictMode>

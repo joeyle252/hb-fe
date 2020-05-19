@@ -4,7 +4,6 @@ import { Button, Nav, Form, Navbar } from 'react-bootstrap';
 
 
 
-
 export default function NavBar() {
 
   let history = useHistory();
