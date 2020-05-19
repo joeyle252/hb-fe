@@ -3,12 +3,22 @@
     border: 1px solid red;
     display: grid;
     grid-gap: 20px;
-    grid-template-columns: 1fr 4fr;
     grid-template-areas:
-    "navbar navbar"
-    "search search"
-    "filters hotels-list"
+    "navbar"
+    "search"
+    "filters"
+    "hotels-list"
 }
+@media (min-width: 700px){
+    .container {
+        grid-template-columns: 1fr 4fr;
+        grid-template-areas:
+        "navbar navbar"
+        "search search"
+        "filters hotels-list"
+    }
+}
+
 .navbar {
     border: 1px solid black;
     grid-area: navbar;
