@@ -24,6 +24,7 @@ export default function HotelList() {
         return (
           <li key={hotel.id}>
             <p> title: {hotel.name}</p>
+            <p>address: {hotel.address}</p>
             <p> start rating: {hotel.starRating} </p>
           </li>
         );
