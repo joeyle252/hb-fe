@@ -14,32 +14,46 @@ import "./search.css";
 
 export default function MaterialUIPickers() {
   const dispatch = useDispatch();
-  const destination = useSelector(state=>state.search.destination);
+  const destination = useSelector((state) => state.search.destination);
+  const checkIn = useSelector((state) => state.search.checkIn);
+  const checkOut = useSelector((state) => state.search.checkOut);
+  const roomQuantity = useSelector((state) => state.search.roomQuantity);
   //const [selectedDestination, setSelectedDestination] = useState("");
-  const [selectedCheckinDate, setSelectedCheckinDate] = useState(new Date());
-  const [selectedCheckoutDate, setSelectedCheckoutDate] = useState(new Date());
-  const [roomQuantity, setRoomQuantity] = useState(0);
+  //const [selectedCheckinDate, setSelectedCheckinDate] = useState(new Date());
+  //const [selectedCheckoutDate, setSelectedCheckoutDate] = useState(new Date());
+  //const [roomQuantity, setRoomQuantity] = useState(0);
 
   const handleDestinationChange = (e) => {
     //setSelectedDestination(e.target.value);
-    const action = {type: "SET_DESTINATION", payload: {destination: e.target.value}}
-    dispatch(action)
-
+    const action = {
+      type: "SET_DESTINATION",
+      payload: { destination: e.target.value },
+    };
+    dispatch(action);
   };
 
   const handleCheckinDateChange = (date) => {
-    setSelectedCheckinDate(date);
+    //setSelectedCheckinDate(date);
+    const action = { type: "SET_CHECKIN", payload: { checkIn: date } };
+    dispatch(action);
   };
 
   const handleCheckoutDateChange = (date) => {
-    setSelectedCheckoutDate(date);
+    //setSelectedCheckoutDate(date);
+    const action = { type: "SET_CHECKOUT", payload: { checkOut: date } };
+    dispatch(action);
   };
 
   const handleRoomQuantityChange = (e) => {
     const val = e.target.value;
     if (/^\d+$/.test(val)) {
       // if val is number
-      setRoomQuantity(val);
+      //setRoomQuantity(val);
+      const action = {
+        type: "SET_ROOM_QUANTITY",
+        payload: { roomQuantity: val },
+      };
+      dispatch(action);
     }
   };
 
@@ -78,7 +92,7 @@ export default function MaterialUIPickers() {
               id="date-picker-inline"
               label="Check in"
               name="checkin"
-              value={selectedCheckinDate}
+              value={checkIn}
               onChange={handleCheckinDateChange}
               KeyboardButtonProps={{
                 "aria-label": "change date",
@@ -90,9 +104,9 @@ export default function MaterialUIPickers() {
               format="MM/dd/yyyy"
               margin="normal"
               id="date-picker-inline"
-              label="Check in"
+              label="Check out"
               name="checkin"
-              value={selectedCheckoutDate}
+              value={checkOut}
               onChange={handleCheckoutDateChange}
               KeyboardButtonProps={{
                 "aria-label": "change date",
