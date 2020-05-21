@@ -1,12 +1,13 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
-import 'bootstrap/dist/css/bootstrap.min.css';
+import "bootstrap/dist/css/bootstrap.min.css";
 import * as serviceWorker from "./serviceWorker";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import HotelListPage from "./pages/HotelListPage/HotelListPage";
 import SignUpPage from "./pages/signuppage/SignUpPage";
 import SignInPage from "./pages/signinpage/SignInPage";
+import HotelDetail from "./pages/hotelDetail/HotelDetail";
 
 import { Server } from "miragejs";
 new Server({
@@ -43,8 +44,6 @@ new Server({
   }
 })
 
-
-
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
@@ -55,6 +54,9 @@ ReactDOM.render(
         <Route path="/signin">
           <SignInPage />
         </Route>
+        <Route path="/hotel">
+          <HotelDetail />
+          </Route>
         <Route path="/">
           <HotelListPage />
         </Route>

@@ -1,9 +1,20 @@
 import React, { useEffect, useState } from "react";
+import { useHistory } from "react-router-dom";
+import { Card, Button } from "react-bootstrap";
+import "./hotelList.css";
+
 
 export default function HotelList() {
   const [hotels, setHotels] = useState([]);
   const [loading, setLoading] = useState(false);
 
+
+  let history = useHistory();
+
+  const showDetail = ()=>{
+    history.push("/hotel")
+
+  }
   const fetchHotels = async () => {
     setLoading(true);
     const result = await fetch("/api/hotels");
@@ -17,18 +28,25 @@ export default function HotelList() {
   if (loading) {
     return <div> loading ...</div>;
   }
-
+  
   return (
     <div style={{ height: "100%", width: "100%" }}>
       <ul>
         {hotels.map((hotel) => {
           return (
-            <li key={hotel.id}>
-              <p> title: {hotel.name}</p>
-              <p>address: {hotel.address}</p>
-              <p> start rating: {hotel.starRating} </p>
-              <img src={hotel.photos[0]} style={{ height: "50px", width: "50px" }} />
-            </li>
+            <Card key={hotel.id} style={{ width: '100%', display:"flex", flexDirection:"row" }}>
+             
+              <Card.Img variant="top"style={{height: "250px",width:"300px", justifyItems :"center"}} src="https://q-cf.bstatic.com/images/hotel/max1024x768/211/211332081.jpg" />
+             
+              <Card.Body>
+                <Card.Title>{hotel.name}</Card.Title>
+                <Card.Text> Address: {hotel.address}</Card.Text>
+                <Card.Text> Star Rating: {hotel.starRating}</Card.Text>
+                <Card.Text> {hotel.description}</Card.Text>
+                <Button variant="primary" onClick={showDetail}>More detail</Button>
+              </Card.Body>
+            </Card>
+            
           );
         })}
       </ul>
