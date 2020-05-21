@@ -1,5 +1,6 @@
 import "date-fns";
 import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { TextField } from "@material-ui/core";
 import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
@@ -12,13 +13,18 @@ import {
 import "./search.css";
 
 export default function MaterialUIPickers() {
-  const [selectedDestination, setSelectedDestination] = useState("");
+  const dispatch = useDispatch();
+  const destination = useSelector(state=>state.search.destination);
+  //const [selectedDestination, setSelectedDestination] = useState("");
   const [selectedCheckinDate, setSelectedCheckinDate] = useState(new Date());
   const [selectedCheckoutDate, setSelectedCheckoutDate] = useState(new Date());
   const [roomQuantity, setRoomQuantity] = useState(0);
 
   const handleDestinationChange = (e) => {
-    setSelectedDestination(e.target.value);
+    //setSelectedDestination(e.target.value);
+    const action = {type: "SET_DESTINATION", payload: {destination: e.target.value}}
+    dispatch(action)
+
   };
 
   const handleCheckinDateChange = (date) => {
@@ -60,7 +66,7 @@ export default function MaterialUIPickers() {
           <TextField
             id="standard-basic"
             label="Destination"
-            value={selectedDestination}
+            value={destination}
             onChange={handleDestinationChange}
           />
           <div inline="true">

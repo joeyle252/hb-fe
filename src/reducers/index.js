@@ -1,8 +1,9 @@
-const rootReducer = (state, action) => {
-  switch (action.type) {
-    default:
-      return state;
-  }
-};
+import { combineReducers } from "redux";
+import searchReducer from "./searchReducer";
+
+const rootReducer = combineReducers({
+  search: searchReducer,
+  //other reducer
+});
 
 export default rootReducer;
