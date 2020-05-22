@@ -1,5 +1,5 @@
 import "date-fns";
-import React, { useState } from "react";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { TextField } from "@material-ui/core";
 import Button from "@material-ui/core/Button";
@@ -10,27 +10,32 @@ import {
   KeyboardTimePicker,
   KeyboardDatePicker,
 } from "@material-ui/pickers";
+import ComboBox from "./destination";
+
 import "./search.css";
 
 export default function MaterialUIPickers() {
   const dispatch = useDispatch();
-  const destination = useSelector((state) => state.search.destination);
+
   const checkIn = useSelector((state) => state.search.checkIn);
   const checkOut = useSelector((state) => state.search.checkOut);
   const roomQuantity = useSelector((state) => state.search.roomQuantity);
+  //const destination = useSelector((state) => state.search.destination);
   //const [selectedDestination, setSelectedDestination] = useState("");
   //const [selectedCheckinDate, setSelectedCheckinDate] = useState(new Date());
   //const [selectedCheckoutDate, setSelectedCheckoutDate] = useState(new Date());
   //const [roomQuantity, setRoomQuantity] = useState(0);
 
-  const handleDestinationChange = (e) => {
-    //setSelectedDestination(e.target.value);
-    const action = {
-      type: "SET_DESTINATION",
-      payload: { destination: e.target.value },
-    };
-    dispatch(action);
-  };
+  // const handleDestinationChange = (option) => {
+  //   console.log(option);
+  //   //setSelectedDestination(e.target.value);
+  //   const action = {
+  //     type: "SET_DESTINATION",
+  //     payload: { destination: option },
+  //   };
+
+  //   dispatch(action);
+  // };
 
   const handleCheckinDateChange = (date) => {
     //setSelectedCheckinDate(date);
@@ -47,7 +52,7 @@ export default function MaterialUIPickers() {
   const handleRoomQuantityChange = (e) => {
     const val = e.target.value;
     if (/^\d+$/.test(val)) {
-      // if val is number
+      // check if the val is number or not
       //setRoomQuantity(val);
       const action = {
         type: "SET_ROOM_QUANTITY",
@@ -61,11 +66,9 @@ export default function MaterialUIPickers() {
     <div className="container-search">
       <div style={{ display: "flex", flexDirection: "column" }}>
         <p style={{ display: "flex", justifyContent: "center" }}>
-          {" "}
           HOTEL, RESORT AND MORE THAN THAT
         </p>
         <p style={{ display: "flex", justifyContent: "center" }}>
-          {" "}
           Receive the best rate for over thousands hotel all over the world
         </p>
       </div>
@@ -77,11 +80,11 @@ export default function MaterialUIPickers() {
           justify="space-around"
           alignItems="center"
         >
-          <TextField
+          <ComboBox
             id="standard-basic"
             label="Destination"
-            value={destination}
-            onChange={handleDestinationChange}
+            //value={destination}
+            getOptionLabel={(option) => option.title}
           />
           <div inline="true">
             <KeyboardDatePicker

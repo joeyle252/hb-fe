@@ -1,5 +1,5 @@
 const initialState = {
-  destination: "Ho Chi Minh city, Viet Nam",
+  destination: "",
   checkIn: new Date(),
   checkOut: new Date(),
   roomQuantity: 0,
@@ -25,10 +25,10 @@ const searchReducer = (state = initialState, action) => {
       };
     }
     case "SET_ROOM_QUANTITY": {
-        return {
-            ...state,
-            roomQuantity: action.payload.roomQuantity,
-        }
+      return {
+        ...state,
+        roomQuantity: action.payload.roomQuantity,
+      };
     }
     default:
       return state;
