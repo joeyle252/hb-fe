@@ -11,12 +11,12 @@ import {
   KeyboardDatePicker,
 } from "@material-ui/pickers";
 import ComboBox from "./destination";
+import {searchHotels} from "../../actions/searchActions";
 
 import "./search.css";
 
 export default function MaterialUIPickers() {
   const dispatch = useDispatch();
-
   const checkIn = useSelector((state) => state.search.checkIn);
   const checkOut = useSelector((state) => state.search.checkOut);
   const roomQuantity = useSelector((state) => state.search.roomQuantity);
@@ -61,6 +61,10 @@ export default function MaterialUIPickers() {
       dispatch(action);
     }
   };
+
+ const onSearchClick = () => {
+    dispatch(searchHotels);
+  }
 
   return (
     <div className="container-search">
@@ -125,11 +129,12 @@ export default function MaterialUIPickers() {
               onChange={handleRoomQuantityChange}
             />
             <Button
+            onClick={onSearchClick}
               margin="normal"
               variant="contained"
               color="primary"
               disableElevation
-              style={{ width: "230px", marginTop: "6%" }}
+              style={{ width: "230px", marginTop: "6%" }} 
             >
               Search
             </Button>

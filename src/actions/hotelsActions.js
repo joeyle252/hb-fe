@@ -1,10 +1,4 @@
-// const fetchHotels = async () => {
-//     setLoading(true);
-//     const result = await fetch("/api/hotels");
-//     const data = await result.json(); // {hotels: []}
-//     setHotels(data.hotels);
-//     setLoading(false);
-//   };
+
 
 export const fetchHotels = async (dispatch, getState) => {
   let loadingAction = {
