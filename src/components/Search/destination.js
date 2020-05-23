@@ -4,7 +4,7 @@ import TextField from "@material-ui/core/TextField";
 import Autocomplete from "@material-ui/lab/Autocomplete";
 import { useDispatch } from "react-redux";
 
-export default function ComboBox() {
+export default function ComboBox(props) {
   const dispatch = useDispatch();
   const handleDestinationChange = (e, value) => {
     const action = {
@@ -22,7 +22,14 @@ export default function ComboBox() {
       onChange={handleDestinationChange}
       style={{ width: 300 }}
       renderInput={(params) => (
-        <TextField {...params} label="Destionation" variant="outlined" />
+        <TextField
+          error={props.errorMessage}
+          helperText={props.errorMessage}
+          required
+          {...params}
+          label="Destination"
+          variant="outlined"
+        />
       )}
     />
   );

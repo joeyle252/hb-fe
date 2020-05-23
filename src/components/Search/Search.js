@@ -5,13 +5,9 @@ import { TextField } from "@material-ui/core";
 import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
 import DateFnsUtils from "@date-io/date-fns";
-import {
-  MuiPickersUtilsProvider,
-  KeyboardTimePicker,
-  KeyboardDatePicker,
-} from "@material-ui/pickers";
+import { MuiPickersUtilsProvider, KeyboardTimePicker, KeyboardDatePicker } from "@material-ui/pickers";
 import ComboBox from "./destination";
-import {searchHotels} from "../../actions/searchActions";
+import { searchHotels, validateSearchFields } from "../../actions/searchActions";
 
 import "./search.css";
 
@@ -20,6 +16,7 @@ export default function MaterialUIPickers() {
   const checkIn = useSelector((state) => state.search.checkIn);
   const checkOut = useSelector((state) => state.search.checkOut);
   const roomQuantity = useSelector((state) => state.search.roomQuantity);
+  const errors = useSelector((state) => state.search.errors);
   //const destination = useSelector((state) => state.search.destination);
   //const [selectedDestination, setSelectedDestination] = useState("");
   //const [selectedCheckinDate, setSelectedCheckinDate] = useState(new Date());
@@ -51,7 +48,7 @@ export default function MaterialUIPickers() {
 
   const handleRoomQuantityChange = (e) => {
     const val = e.target.value;
-    if (/^\d+$/.test(val)) {
+    if (/^[1-9]+$/.test(val)) {
       // check if the val is number or not
       //setRoomQuantity(val);
       const action = {
@@ -62,36 +59,33 @@ export default function MaterialUIPickers() {
     }
   };
 
- const onSearchClick = () => {
+  const onSearchClick = () => {
+    dispatch(validateSearchFields);
     dispatch(searchHotels);
-  }
+  };
 
   return (
     <div className="container-search">
       <div style={{ display: "flex", flexDirection: "column" }}>
-        <p style={{ display: "flex", justifyContent: "center" }}>
-          HOTEL, RESORT AND MORE THAN THAT
-        </p>
+        <p style={{ display: "flex", justifyContent: "center" }}>HOTEL, RESORT AND MORE THAN THAT</p>
         <p style={{ display: "flex", justifyContent: "center" }}>
           Receive the best rate for over thousands hotel all over the world
         </p>
       </div>
       <MuiPickersUtilsProvider utils={DateFnsUtils}>
-        <Grid
-          container
-          flex="true"
-          direction="column"
-          justify="space-around"
-          alignItems="center"
-        >
+        <Grid container flex="true" direction="column" justify="space-around" alignItems="center">
           <ComboBox
             id="standard-basic"
             label="Destination"
             //value={destination}
             getOptionLabel={(option) => option.title}
+            errorMessage={errors.destination}
           />
           <div inline="true">
             <KeyboardDatePicker
+              error={errors.checkIn}
+              helperText={errors.checkIn}
+              required
               disableToolbar
               variant="inline"
               format="MM/dd/yyyy"
@@ -106,6 +100,9 @@ export default function MaterialUIPickers() {
               }}
             />
             <KeyboardDatePicker
+              error={errors.checkOut}
+              helperText={errors.checkOut}
+              required
               disableToolbar
               variant="inline"
               format="MM/dd/yyyy"
@@ -122,6 +119,9 @@ export default function MaterialUIPickers() {
           </div>
           <div inline="true">
             <TextField
+              error={errors.roomQuantity}
+              helperText={errors.roomQuantity}
+              required
               id="standard-number"
               type="number"
               label="Number of room"
@@ -129,12 +129,12 @@ export default function MaterialUIPickers() {
               onChange={handleRoomQuantityChange}
             />
             <Button
-            onClick={onSearchClick}
+              onClick={onSearchClick}
               margin="normal"
               variant="contained"
               color="primary"
               disableElevation
-              style={{ width: "230px", marginTop: "6%" }} 
+              style={{ width: "230px", marginTop: "6%" }}
             >
               Search
             </Button>

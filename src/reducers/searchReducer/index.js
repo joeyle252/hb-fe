@@ -2,10 +2,17 @@ const initialState = {
   destination: "",
   checkIn: new Date(),
   checkOut: new Date(),
-  roomQuantity: 0,
+  roomQuantity: 1,
+  errors: {},
 };
 const searchReducer = (state = initialState, action) => {
   switch (action.type) {
+    case "SET_SEARCH_ERRORS": {
+      return {
+        ...state,
+        errors: action.payload.errors,
+      };
+    }
     case "SET_DESTINATION": {
       return {
         ...state,

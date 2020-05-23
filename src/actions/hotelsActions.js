@@ -15,3 +15,8 @@ export const fetchHotels = async (dispatch, getState) => {
   };
   dispatch(hotelsAction);
 };
+
+
+// const result = await fetch(
+//   `/api/hotels?destination=${state.search.destination}&roomQuantity=${state.search.roomQuantity}&checkIn=${state.search.checkIn}&checkOut=${state.search.checkOut}`
+// );
