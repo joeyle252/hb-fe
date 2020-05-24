@@ -6,8 +6,8 @@ const buildUrl = (state) => {
     { key: "checkIn", value: state.search.checkIn },
     { key: "checkOut", value: state.search.checkOut },
     { key: "roomQuantity", value: state.search.roomQuantity },
-    { key: "starRating", value: state.search.starRating },
-    { key: "priceMaximum", value: state.search.priceMaximum },
+    { key: "starRating", value: state.filters.starRating.join(",") }, //convert star rating array to a string of numbers "2,3,4,5"
+    { key: "priceMaximum", value: state.filters.priceMaximum },
   ];
   //debugger;
   fields.forEach((field, idx) => {
