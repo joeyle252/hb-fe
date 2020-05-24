@@ -7,7 +7,8 @@ import Grid from "@material-ui/core/Grid";
 import DateFnsUtils from "@date-io/date-fns";
 import { MuiPickersUtilsProvider, KeyboardTimePicker, KeyboardDatePicker } from "@material-ui/pickers";
 import ComboBox from "./destination";
-import { searchHotels, validateSearchFields } from "../../actions/searchActions";
+import { validateSearchFields } from "../../actions/searchActions";
+import { fetchHotels } from "../../actions/hotelsActions";
 
 import "./search.css";
 
@@ -36,13 +37,13 @@ export default function MaterialUIPickers() {
 
   const handleCheckinDateChange = (date) => {
     //setSelectedCheckinDate(date);
-    const action = { type: "SET_CHECKIN", payload: { checkIn: date } };
+    const action = { type: "SET_CHECKIN", payload: { checkIn: date.toISOString() } };
     dispatch(action);
   };
 
   const handleCheckoutDateChange = (date) => {
     //setSelectedCheckoutDate(date);
-    const action = { type: "SET_CHECKOUT", payload: { checkOut: date } };
+    const action = { type: "SET_CHECKOUT", payload: { checkOut: date.toISOString() } };
     dispatch(action);
   };
 
@@ -61,7 +62,7 @@ export default function MaterialUIPickers() {
 
   const onSearchClick = () => {
     dispatch(validateSearchFields);
-    dispatch(searchHotels);
+    dispatch(fetchHotels);
   };
 
   return (

@@ -1,7 +1,7 @@
 const initialState = {
   destination: "",
-  checkIn: new Date(),
-  checkOut: new Date(),
+  checkIn: new Date().toISOString(),
+  checkOut: new Date().toISOString(),
   roomQuantity: 1,
   errors: {},
 };

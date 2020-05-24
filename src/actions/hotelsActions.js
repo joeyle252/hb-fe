@@ -1,22 +1,42 @@
+const buildUrl = (state) => {
+  let qs = "";
 
-
-export const fetchHotels = async (dispatch, getState) => {
-  let loadingAction = {
-    type: "SET_HOTELS_LOADING",
-    payload: { loading: true },
-  };
-  dispatch(loadingAction);
-
-  const result = await fetch("/api/hotels");
-  const data = await result.json();
-  const hotelsAction = {
-    type: "SET_HOTELS_LIST",
-    payload: { hotels: data.hotels },
-  };
-  dispatch(hotelsAction);
+  const fields = [
+    { key: "destination", value: state.search.destination },
+    { key: "checkIn", value: state.search.checkIn },
+    { key: "checkOut", value: state.search.checkOut },
+    { key: "roomQuantity", value: state.search.roomQuantity },
+    { key: "starRating", value: state.search.starRating },
+    { key: "priceMaximum", value: state.search.priceMaximum },
+  ];
+  //debugger;
+  fields.forEach((field, idx) => {
+    if (field.value) {
+      qs += `${idx === 0 ? "" : "&"}${field.key}=${field.value}`;
+      console.log("qs", qs);
+    }
+  });
+  const url = `/api/hotels?${qs}`;
+  return url;
 };
 
+const objEmpty = (obj) => Object.keys(obj).length === 0;
 
-// const result = await fetch(
-//   `/api/hotels?destination=${state.search.destination}&roomQuantity=${state.search.roomQuantity}&checkIn=${state.search.checkIn}&checkOut=${state.search.checkOut}`
-// );
+export const fetchHotels = async (dispatch, getState) => {
+  const state = getState();
+  if (objEmpty(state.search.errors)) {
+    let loadingAction = {
+      type: "SET_HOTELS_LOADING",
+      payload: { loading: true },
+    };
+    dispatch(loadingAction);
+    const url = buildUrl(state);
+    const result = await fetch(url);
+    const data = await result.json();
+    const hotelsAction = {
+      type: "SET_HOTELS_LIST",
+      payload: { hotels: data.hotels },
+    };
+    dispatch(hotelsAction);
+  }
+};
