@@ -15,9 +15,6 @@ export default function HotelList() {
 
   let history = useHistory();
 
-  const showDetail = () => {
-    history.push("/hotel");
-  };
   // const fetchHotels = async () => {
   //   setLoading(true);
   //   const result = await fetch("/api/hotels");
@@ -37,10 +34,7 @@ export default function HotelList() {
       <ul>
         {hotels.map((hotel) => {
           return (
-            <Card
-              key={hotel.id}
-              style={{ width: "100%", display: "flex", flexDirection: "row" }}
-            >
+            <Card key={hotel.id} style={{ width: "100%", display: "flex", flexDirection: "row" }}>
               <Card.Img
                 variant="top"
                 style={{
@@ -55,7 +49,7 @@ export default function HotelList() {
                 <Card.Text> Address: {hotel.address}</Card.Text>
                 <Card.Text> Star Rating: {hotel.starRating}</Card.Text>
                 <Card.Text> {hotel.description}</Card.Text>
-                <Button variant="primary" onClick={showDetail}>
+                <Button variant="primary" onClick={() => history.push(`/hotel/${hotel.id}`)}>
                   More detail
                 </Button>
               </Card.Body>
