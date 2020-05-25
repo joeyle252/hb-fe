@@ -1,10 +1,25 @@
 import React from "react";
-import {Carousel} from "react-bootstrap";
+import { Carousel } from "react-bootstrap";
+import "./HotelDetail.css";
 
+export default function HotelDetail() {
+  return (
+    <div className="container">
+      <div className="navbar">navbar</div>
+      <div className="sidebar">sidebar</div>
+      <div className="content">
+        <div> content</div>
+        <div> content</div>
+        <div> content</div>
+        <div> content</div>
+        content{" "}
+      </div>
+    </div>
+  );
+}
 
-export default function HotelDetail (){
-    return (
-        <div>
+{
+  /* <div>
             <p> hotel name </p> 
             <p> address</p>
             <p> Star rating </p>
@@ -42,8 +57,5 @@ export default function HotelDetail (){
             <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
           </Carousel.Caption>
         </Carousel.Item>
-      </Carousel>
-      </div>
-    )
-        
+      </Carousel> */
 }

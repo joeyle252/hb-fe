@@ -7,7 +7,7 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 import HotelListPage from "./pages/HotelListPage/HotelListPage";
 import SignUpPage from "./pages/signuppage/SignUpPage";
 import SignInPage from "./pages/signinpage/SignInPage";
-import HotelDetail from "./pages/hotelDetail/HotelDetail";
+import HotelDetail from "./pages/HotelDetail/HotelDetail";
 import { Provider } from "react-redux";
 import { createStore, applyMiddleware, compose } from "redux";
 import rootReducer from "./reducers";
@@ -53,10 +53,7 @@ new Server({
 
 const middleware = [thunk];
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-const store = createStore(
-  rootReducer,
-  composeEnhancers(applyMiddleware(...middleware))
-);
+const store = createStore(rootReducer, composeEnhancers(applyMiddleware(...middleware)));
 
 ReactDOM.render(
   <React.StrictMode>
