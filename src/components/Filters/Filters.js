@@ -5,13 +5,13 @@ import FormGroup from "@material-ui/core/FormGroup";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import FormControl from "@material-ui/core/FormControl";
 import FormLabel from "@material-ui/core/FormLabel";
-import Slider from "@material-ui/core/Slider";
 import PriceMaxSlider from "../PriceMaxSlider/PriceMaxSlider";
 import { fetchHotels } from "../../actions/hotelsActions";
 
 export default function Filters() {
   const dispatch = useDispatch();
   const starRating = useSelector((state) => state.filters.starRating); // this is an array of number
+  const priceMaximum = useSelector((state) => state.filters.priceMaximum);
 
   const handleCheckBoxChange = (e) => {
     const checked = e.target.checked;
@@ -26,10 +26,17 @@ export default function Filters() {
     dispatch(checkedAction);
     dispatch(fetchHotels);
   };
-  const [value, setValue] = React.useState(30);
 
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
+  const handlePriceMaximumChange = (e, newPriceMaximum) => {
+    //need to get value of price max
+    // set action here
+    // dispatch action here
+    const sliderAction = {
+      type: "SET_PRICE_MAXIMUM",
+      payload: { priceMaximum: newPriceMaximum },
+    };
+    dispatch(sliderAction);
+    dispatch(fetchHotels);
   };
 
   return (
@@ -64,7 +71,7 @@ export default function Filters() {
         </FormGroup>
         <FormLabel component="legend">Maximum Budget</FormLabel>
         <FormGroup aria-label="position" column>
-          <PriceMaxSlider />
+          <PriceMaxSlider onChange={handlePriceMaximumChange} />
         </FormGroup>
       </FormControl>
     </>

@@ -1,12 +1,12 @@
 /* eslint-disable no-use-before-define */
-import React, { useState } from "react";
+import React from "react";
 import TextField from "@material-ui/core/TextField";
 import Autocomplete from "@material-ui/lab/Autocomplete";
 import { useDispatch } from "react-redux";
 
 export default function ComboBox(props) {
   const dispatch = useDispatch();
-  const handleDestinationChange = (e, value) => {
+  const handleDestinationChange = (value) => {
     const action = {
       type: "SET_DESTINATION",
       payload: { destination: value ? value.title : null },

@@ -12,6 +12,14 @@ const filtersReducer = (state = initialState, action) => {
           : state.starRating.filter((star) => star !== action.payload.ratingType),
       };
     }
+    case "SET_PRICE_MAXIMUM": {
+      return {
+        // decide what will return for price maximum action here
+        ...state,
+        // check if priceMaximum !== 100, remove 100, and put new priceMaximum
+        priceMaximum: action.payload.priceMaximum,
+      };
+    }
     default:
       return state;
   }

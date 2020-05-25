@@ -5,7 +5,7 @@ import { TextField } from "@material-ui/core";
 import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
 import DateFnsUtils from "@date-io/date-fns";
-import { MuiPickersUtilsProvider, KeyboardTimePicker, KeyboardDatePicker } from "@material-ui/pickers";
+import { MuiPickersUtilsProvider, KeyboardDatePicker } from "@material-ui/pickers";
 import ComboBox from "./destination";
 import { validateSearchFields } from "../../actions/searchActions";
 import { fetchHotels } from "../../actions/hotelsActions";

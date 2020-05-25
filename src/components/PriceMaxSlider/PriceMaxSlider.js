@@ -87,14 +87,21 @@ const marks = [
   { value: 100, label: "100" },
 ];
 
-export default function CustomizedSlider() {
+export default function CustomizedSlider(props) {
   const classes = useStyles();
-
   return (
     <div className={classes.root}>
       <Typography gutterBottom>Room price under (VND per million)</Typography>
       <p> </p>
-      <IOSSlider marks={marks} min={1} max={100} aria-label="ios slider" defaultValue={100} valueLabelDisplay="on" />
+      <IOSSlider
+        onChangeCommitted={props.onChange}
+        marks={marks}
+        min={1}
+        max={100}
+        aria-label="ios slider"
+        defaultValue={100}
+        valueLabelDisplay="on"
+      />
     </div>
   );
 }
