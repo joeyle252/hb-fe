@@ -1,6 +1,5 @@
 export const fetchHotelDetail = (hotelId) => {
   return async (dispatch, getState) => {
-    //debugger;
     let loadingAction = {
       type: "SET_DETAIL_LOADING",
       payload: { loading: true },

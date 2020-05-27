@@ -8,8 +8,8 @@ const filtersReducer = (state = initialState, action) => {
       return {
         ...state,
         starRating: action.payload.checked
-          ? [...state.starRating, action.payload.ratingType]
-          : state.starRating.filter((star) => star !== action.payload.ratingType),
+          ? [...state.starRating, action.payload.ratingType] //true, (true again)
+          : state.starRating.filter((star) => star !== action.payload.ratingType),// false
       };
     }
     case "SET_PRICE_MAXIMUM": {

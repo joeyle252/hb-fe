@@ -13,7 +13,6 @@ const buildUrl = (state) => {
   fields.forEach((field, idx) => {
     if (field.value) {
       qs += `${idx === 0 ? "" : "&"}${field.key}=${field.value}`;
-      console.log("qs", qs);
     }
   });
   const url = `/api/hotels?${qs}`;
@@ -21,6 +20,7 @@ const buildUrl = (state) => {
 };
 
 const objEmpty = (obj) => Object.keys(obj).length === 0;
+///
 
 export const fetchHotels = async (dispatch, getState) => {
   const state = getState();
