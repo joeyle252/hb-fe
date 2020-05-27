@@ -5,15 +5,45 @@ import TextField from "@material-ui/core/TextField";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox from "@material-ui/core/Checkbox";
 
-export default function BookingForm() {
+export default function BookingForm(props) {
+  const {
+    firstName,
+    setFirstName,
+    lastName,
+    setLastName,
+    phoneNumber,
+    setPhoneNumber,
+    address,
+    setAddress,
+    email,
+    setEmail,
+    selectedRooms,
+    setSelectedRooms,
+    checkIn,
+    setCheckIn,
+    checkOut,
+    setCheckOut,
+  } = props;
+  console.log("firstname", firstName);
   return (
     <React.Fragment>
       <Typography variant="h6" gutterBottom>
-        Shipping address
+        Make reservation
       </Typography>
       <Grid container spacing={3}>
         <Grid item xs={12} sm={6}>
-          <TextField required id="firstName" name="firstName" label="First name" fullWidth autoComplete="given-name" />
+          <TextField
+            required
+            id="firstName"
+            name="firstName"
+            label="First name"
+            fullWidth
+            autoComplete="given-name"
+            onChange={(e) => {
+              setFirstName(e.target.value);
+            }}
+            value={firstName}
+          />
         </Grid>
         <Grid item xs={12} sm={6}>
           <TextField required id="lastName" name="lastName" label="Last name" fullWidth autoComplete="family-name" />
