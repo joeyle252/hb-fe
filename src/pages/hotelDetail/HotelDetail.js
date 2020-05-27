@@ -24,7 +24,7 @@ export default function HotelDetail() {
       <div className="detail-navbar">
         <Navbar />
       </div>
-      <div className="detail-sidebar">{loading ? "loading..." : <DetailSidebar />}</div>
+      <div className="detail-sidebar">{loading ? "loading..." : hotel && <DetailSidebar />}</div>
       <div className="detail-content">
         {loading
           ? "loading ..."
