@@ -6,6 +6,7 @@ import Navbar from "../../components/Navbar/Navbar";
 import DetailSidebar from "../../components/DetailSidebar/DetailSidebar";
 import HotelPriceTable from "../../components/HotelPriceTable/HotelPriceTable";
 import { fetchHotelDetail } from "../../actions/detailAction";
+import BookReservationButton from "../../components/BookReservationButton/BookReservationButton";
 import "./HotelDetail.css";
 
 export default function HotelDetail() {
@@ -42,6 +43,7 @@ export default function HotelDetail() {
                 </div>
                 <HotelImageCarousel />
                 <HotelPriceTable />
+                <BookReservationButton />
               </>
             )}
       </div>

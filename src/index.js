@@ -7,6 +7,7 @@ import HotelListPage from "./pages/HotelListPage/HotelListPage";
 import SignUpPage from "./pages/signuppage/SignUpPage";
 import SignInPage from "./pages/signinpage/SignInPage";
 import HotelDetail from "./pages/HotelDetail/HotelDetail";
+import BookRoom from "./pages/BookRoom/BookRoom";
 import { Provider } from "react-redux";
 import { createStore, applyMiddleware, compose } from "redux";
 import rootReducer from "./reducers";
@@ -91,6 +92,9 @@ ReactDOM.render(
           </Route>
           <Route path="/hotel/:id">
             <HotelDetail />
+          </Route>
+          <Route path="/bookroom">
+            <BookRoom />
           </Route>
           <Route path="/">
             <HotelListPage />
