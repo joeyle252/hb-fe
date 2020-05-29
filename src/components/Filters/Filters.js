@@ -69,7 +69,7 @@ export default function Filters() {
             labelPlacement="end"
           />
         </FormGroup>
-        <FormLabel component="legend">Maximum Budget</FormLabel>
+        <FormLabel component="legend">What is your budget?</FormLabel>
         <FormGroup aria-label="position" column>
           <PriceMaxSlider onChange={handlePriceMaximumChange} />
         </FormGroup>

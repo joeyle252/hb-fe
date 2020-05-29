@@ -71,9 +71,15 @@ export default function BookRoom() {
   const [phoneNumber, setPhoneNumber] = useState("");
   const [address, setAddress] = useState("");
   const [email, setEmail] = useState("");
-  const [selectedRooms, setSelectedRooms] = useState([]);
-  const [checkIn, setCheckIn] = useState("");
-  const [checkOut, setCheckOut] = useState("");
+  const [selectedRooms, setSelectedRooms] = useState({ standard: 0, deluxe: 0 });
+  const [checkIn, setCheckIn] = useState(new Date());
+  const [checkOut, setCheckOut] = useState(new Date());
+  const [roomNight, setRoomNight] = useState(0);
+
+  const [nameOnCard, setNameOnCard] = useState("");
+  const [cardNumber, setCardNumber] = useState("");
+  const [expiryDate, setExpiryDate] = useState("");
+  const [cvv, setCvv] = useState("");
 
   function getStepContent(step) {
     switch (step) {
@@ -96,10 +102,23 @@ export default function BookRoom() {
             setCheckIn={setCheckIn}
             checkOut={checkOut}
             setCheckOut={setCheckOut}
+            roomNight={roomNight}
+            setRoomNight={setRoomNight}
           />
         );
       case 1:
-        return <PaymentForm />;
+        return (
+          <PaymentForm
+            nameOnCard={nameOnCard}
+            setNameOnCard={setNameOnCard}
+            cardNumber={cardNumber}
+            setCardNumber={setCardNumber}
+            expiryDate={expiryDate}
+            setExpiryData={setExpiryDate}
+            cvv={cvv}
+            setCvv={setCvv}
+          />
+        );
       case 2:
         return <Review />;
       default:

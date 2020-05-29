@@ -9,7 +9,6 @@ import { MuiPickersUtilsProvider, KeyboardDatePicker } from "@material-ui/picker
 import ComboBox from "./destination";
 import { validateSearchFields } from "../../actions/searchActions";
 import { fetchHotels } from "../../actions/hotelsActions";
-
 import "./search.css";
 
 export default function MaterialUIPickers() {
