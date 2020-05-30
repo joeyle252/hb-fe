@@ -74,7 +74,12 @@ export default function Review(props) {
             <Typography variant="body2">{product.value}</Typography>
           </ListItem>
         ))}
-        <p> total: {getTotalPrice(getRoomNight(checkIn, checkOut), detail, selectedRooms)} </p>
+        <ListItem className={classes.listItem} key="total-price">
+          <ListItemText primary="Total" />
+          <Typography variant="subtitle1" className={classes.total}>
+            {getTotalPrice(getRoomNight(checkIn, checkOut), detail, selectedRooms)} VND
+          </Typography>
+        </ListItem>
       </List>
     </React.Fragment>
   );
