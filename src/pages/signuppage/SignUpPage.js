@@ -14,6 +14,7 @@ import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import CircularLoading from "../../components/CircularLoading/CircularLoading";
+import { useHistory } from "react-router-dom";
 
 function Copyright() {
   return (
@@ -59,6 +60,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function SignInSide() {
+  const history = useHistory();
   const dispatch = useDispatch();
   const loading = useSelector((state) => state.user.loading);
   const [firstName, setFirstName] = useState("");
@@ -170,6 +172,7 @@ export default function SignInSide() {
                   payload: { user: data.user },
                 };
                 dispatch(userAction);
+                history.push("/");
               }}
             >
               Sign Up
