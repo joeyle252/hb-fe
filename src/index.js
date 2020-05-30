@@ -72,6 +72,20 @@ new Server({
       },
       { timing: 3000 }
     );
+    this.post(
+      "/user",
+      (schema, request) => {
+        const body = JSON.parse(request.requestBody);
+        return {
+          user: {
+            ...body,
+            id: "11111fakeuserID",
+            token: "faketoken9997363636",
+          },
+        };
+      },
+      { timing: 3000 }
+    );
   },
 });
 
