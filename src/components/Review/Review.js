@@ -20,42 +20,43 @@ export default function Review(props) {
   }));
   const {
     firstName,
-    setFirstName,
     lastName,
-    setLastName,
     phoneNumber,
-    setPhoneNumber,
     address,
-    setAddress,
     email,
-    setEmail,
     selectedRooms,
-    setSelectedRooms,
     checkIn,
-    setCheckIn,
     checkOut,
-    setCheckOut,
     roomNight,
-    setRoomNight,
     nameOnCard,
-    setNameOnCard,
     cardNumber,
-    setCardNumber,
     expiryDate,
-    setExpiryDate,
     cvv,
-    setCvv,
   } = props;
-  const products = [{ name: { selectedRooms }, price: "$9.99" }];
-  const addresses = [{ address }];
-  const payments = [
-    //   { name: "Card type", detail: "Visa" },
-    { name: "Card holder", detail: "nameOnCard" },
-    { name: "Card number", detail: "cardNumber" },
-    { name: "Expiry date", detail: "expiryDate" },
+  const products = [
+    { label: "First Name", value: firstName },
+    { label: "Last Name", value: lastName },
+    { label: "Email", value: email },
+    { label: "Address", value: address },
+    { label: "Phone Number", value: phoneNumber },
+   
+    { label: "Card Holder Name", value: nameOnCard },
+    { label: "Card Number ", value: cardNumber },
+    { label: "Expiry Date ", value: expiryDate.toString() },
+    { label: "CVV ", value: cvv },
+
+    { label: "Check In Date ", value: checkIn.toString() },
+    { label: "check Out Date", value: checkOut.toString() },
+    { label: "Room Night", value: roomNight },
   ];
 
-  console.log("name", nameOnCard);
+  if (selectedRooms.standard > 0) {
+    products.push({ label: "Standard Rooms", value: selectedRooms.standard });
+  }
+  if (selectedRooms.deluxe > 0) {
+    products.push({ label: "Deluxe Rooms", value: selectedRooms.deluxe });
+  }
+
   const classes = useStyles();
 
   return (

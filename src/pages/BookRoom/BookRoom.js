@@ -123,32 +123,19 @@ export default function BookRoom() {
         return (
           <Review
             firstName={firstName}
-            setFirstName={setFirstName}
             lastName={lastName}
-            setLastName={setLastName}
             phoneNumber={phoneNumber}
-            setPhoneNumber={setPhoneNumber}
             address={address}
-            setAddress={setAddress}
             email={email}
-            setEmail={setEmail}
             selectedRooms={selectedRooms}
-            setSelectedRooms={setSelectedRooms}
             checkIn={checkIn}
-            setCheckIn={setCheckIn}
             checkOut={checkOut}
-            setCheckOut={setCheckOut}
             roomNight={roomNight}
-            setRoomNight={setRoomNight}
             //
             nameOnCard={nameOnCard}
-            setNameOnCard={setNameOnCard}
             cardNumber={cardNumber}
-            setCardNumber={setCardNumber}
             expiryDate={expiryDate}
-            setExpiryData={setExpiryDate}
             cvv={cvv}
-            setCvv={setCvv}
           />
         );
       default:
