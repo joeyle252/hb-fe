@@ -78,7 +78,7 @@ export default function BookRoom() {
 
   const [nameOnCard, setNameOnCard] = useState("");
   const [cardNumber, setCardNumber] = useState("");
-  const [expiryDate, setExpiryDate] = useState("");
+  const [expiryDate, setExpiryDate] = useState(new Date());
   const [cvv, setCvv] = useState("");
 
   function getStepContent(step) {
@@ -114,13 +114,43 @@ export default function BookRoom() {
             cardNumber={cardNumber}
             setCardNumber={setCardNumber}
             expiryDate={expiryDate}
-            setExpiryData={setExpiryDate}
+            setExpiryDate={setExpiryDate}
             cvv={cvv}
             setCvv={setCvv}
           />
         );
       case 2:
-        return <Review />;
+        return (
+          <Review
+            firstName={firstName}
+            setFirstName={setFirstName}
+            lastName={lastName}
+            setLastName={setLastName}
+            phoneNumber={phoneNumber}
+            setPhoneNumber={setPhoneNumber}
+            address={address}
+            setAddress={setAddress}
+            email={email}
+            setEmail={setEmail}
+            selectedRooms={selectedRooms}
+            setSelectedRooms={setSelectedRooms}
+            checkIn={checkIn}
+            setCheckIn={setCheckIn}
+            checkOut={checkOut}
+            setCheckOut={setCheckOut}
+            roomNight={roomNight}
+            setRoomNight={setRoomNight}
+            //
+            nameOnCard={nameOnCard}
+            setNameOnCard={setNameOnCard}
+            cardNumber={cardNumber}
+            setCardNumber={setCardNumber}
+            expiryDate={expiryDate}
+            setExpiryData={setExpiryDate}
+            cvv={cvv}
+            setCvv={setCvv}
+          />
+        );
       default:
         throw new Error("Unknown step");
     }

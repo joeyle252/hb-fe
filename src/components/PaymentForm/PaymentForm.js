@@ -1,4 +1,8 @@
 import React from "react";
+import "date-fns";
+import PropTypes from "prop-types";
+import DateFnsUtils from "@date-io/date-fns";
+import { KeyboardDatePicker, MuiPickersUtilsProvider } from "@material-ui/pickers";
 import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
 import TextField from "@material-ui/core/TextField";
@@ -43,6 +47,22 @@ function TextMaskCustom(props) {
   );
 }
 
+function TextMaskCustomCvv(props) {
+  const { inputRef, ...other } = props;
+
+  return (
+    <MaskedInput
+      {...other}
+      ref={(ref) => {
+        inputRef(ref ? ref.inputElement : null);
+      }}
+      mask={[/\d/, /\d/, /\d/]}
+      placeholderChar={"\u2000"}
+      showMask
+    />
+  );
+}
+
 export default function PaymentForm(props) {
   const { nameOnCard, setNameOnCard, cardNumber, setCardNumber, expiryDate, setExpiryDate, cvv, setCvv } = props;
   return (
@@ -72,46 +92,31 @@ export default function PaymentForm(props) {
             id="formatted-text-mask-input"
             inputComponent={TextMaskCustom}
           />
-          {/* <TextField
-            type="number"
-            required
-            id="cardNumber"
-            label="Card number"
-            fullWidth
-            autoComplete="cc-number"
-            name="numberformat"
-            value={cardNumber}
-            onChange={(e) => {
-              setCardNumber(e.target.value);
-            }}
-          /> */}
         </Grid>
+        <MuiPickersUtilsProvider utils={DateFnsUtils}>
+          <Grid container item xs={12} sm={6}>
+            <KeyboardDatePicker
+              margin="normal"
+              id="date-picker-inline"
+              label="Expiry Date"
+              format="MM/dd/yyyy"
+              onChange={(date) => {
+                setExpiryDate(date);
+              }}
+              value={expiryDate}
+              KeyboardButtonProps={{
+                "aria-label": "change date",
+              }}
+            />
+          </Grid>
+        </MuiPickersUtilsProvider>
         <Grid item xs={12} md={6}>
-          <TextField
-            required
-            id="expDate"
-            label="Expiry date"
-            fullWidth
-            autoComplete="cc-exp"
-            value={expiryDate}
-            onChange={(e) => {
-              setExpiryDate(e.target.value);
-            }}
-          />
-        </Grid>
-        <Grid item xs={12} md={6}>
-          <TextField
-            required
-            type="number"
-            id="cvv"
-            label="CVV"
-            helperText="Last three digits on signature strip"
-            fullWidth
-            autoComplete="cc-csc"
+          <Input
             value={cvv}
-            onChange={(e) => {
-              setCvv(e.target.value);
-            }}
+            onChange={(e) => setCvv(e.target.value)}
+            name="textmask"
+            id="formatted-text-mask-input"
+            inputComponent={TextMaskCustomCvv}
           />
         </Grid>
         <Grid item xs={12}>
@@ -124,3 +129,7 @@ export default function PaymentForm(props) {
     </React.Fragment>
   );
 }
+
+PaymentForm.propTypes = {
+  setExpiryDate: PropTypes.func.isRequired,
+};
