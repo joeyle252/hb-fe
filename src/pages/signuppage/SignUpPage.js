@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
@@ -13,6 +13,7 @@ import Grid from "@material-ui/core/Grid";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
+import CircularLoading from "../../components/CircularLoading/CircularLoading";
 
 function Copyright() {
   return (
@@ -59,15 +60,11 @@ const useStyles = makeStyles((theme) => ({
 
 export default function SignInSide() {
   const dispatch = useDispatch();
+  const loading = useSelector((state) => state.user.loading);
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
-  console.log("firstname", firstName);
-  console.log("lastname", lastName);
-  console.log("email", email);
-  console.log("password", password);
 
   const classes = useStyles();
 
@@ -139,6 +136,7 @@ export default function SignInSide() {
             />
             <FormControlLabel control={<Checkbox value="remember" color="primary" />} label="Remember me" />
             <Button
+              disabled={loading}
               type="submit"
               fullWidth
               variant="contained"
@@ -175,7 +173,13 @@ export default function SignInSide() {
               }}
             >
               Sign Up
+              {loading && (
+                <span style={{ marginLeft: "15px" }}>
+                  <CircularLoading />
+                </span>
+              )}
             </Button>
+
             <Grid container>
               <Grid item xs>
                 <Link href="#" variant="body2">
