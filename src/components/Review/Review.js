@@ -6,8 +6,11 @@ import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
 import Grid from "@material-ui/core/Grid";
 import getRoomNight from "../../utils/getRoomNight";
+import getTotalPrice from "../../utils/getTotalPrice";
+import { useSelector } from "react-redux";
 
 export default function Review(props) {
+  const detail = useSelector((state) => state.detail);
   const useStyles = makeStyles((theme) => ({
     listItem: {
       padding: theme.spacing(1, 0),
@@ -71,6 +74,7 @@ export default function Review(props) {
             <Typography variant="body2">{product.value}</Typography>
           </ListItem>
         ))}
+        <p> total: {getTotalPrice(getRoomNight(checkIn, checkOut), detail, selectedRooms)} </p>
       </List>
     </React.Fragment>
   );
