@@ -17,6 +17,7 @@ import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
 import MenuItem from "@material-ui/core/MenuItem";
 import Select from "@material-ui/core/Select";
+import getRoomNight from "../../utils/getRoomNight";
 
 export default function BookingForm(props) {
   const availableRooms = useSelector((state) => state.detail.hotel && state.detail.hotel.availableRooms);
@@ -40,19 +41,9 @@ export default function BookingForm(props) {
     setCheckIn,
     checkOut,
     setCheckOut,
-    roomNight,
-    setRoomNight,
   } = props;
 
-  const getRoomNight = () => {
-    const oneDay = 24 * 60 * 60 * 1000;
-    var date1 = new Date(checkOut);
-    var date2 = new Date(checkIn);
-    const rn = Math.round(Math.abs((date1 - date2) / oneDay));
-    return rn;
-  };
-
-  console.log("roomnight", roomNight);
+  console.log("roomnight", getRoomNight(checkIn, checkOut));
 
   return (
     <React.Fragment>
@@ -159,7 +150,7 @@ export default function BookingForm(props) {
               />
             </Grid>
             <Grid item xs={12} sm={4}>
-              <TextField label="Room night" fullWidth value={roomNight} onChange={setRoomNight(getRoomNight())} />
+              <TextField label="Room night" fullWidth value={getRoomNight(checkIn, checkOut)} />
             </Grid>
           </Grid>
           <TableContainer component={Paper}>

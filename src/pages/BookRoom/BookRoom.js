@@ -74,7 +74,6 @@ export default function BookRoom() {
   const [selectedRooms, setSelectedRooms] = useState({ standard: 0, deluxe: 0 });
   const [checkIn, setCheckIn] = useState(new Date());
   const [checkOut, setCheckOut] = useState(new Date());
-  const [roomNight, setRoomNight] = useState(0);
 
   const [nameOnCard, setNameOnCard] = useState("");
   const [cardNumber, setCardNumber] = useState("");
@@ -102,8 +101,6 @@ export default function BookRoom() {
             setCheckIn={setCheckIn}
             checkOut={checkOut}
             setCheckOut={setCheckOut}
-            roomNight={roomNight}
-            setRoomNight={setRoomNight}
           />
         );
       case 1:
@@ -130,7 +127,6 @@ export default function BookRoom() {
             selectedRooms={selectedRooms}
             checkIn={checkIn}
             checkOut={checkOut}
-            roomNight={roomNight}
             //
             nameOnCard={nameOnCard}
             cardNumber={cardNumber}
