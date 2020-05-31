@@ -1,4 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
@@ -12,6 +14,7 @@ import Grid from "@material-ui/core/Grid";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
+import CircularLoading from "../../components/CircularLoading/CircularLoading";
 
 function Copyright() {
   return (
@@ -57,8 +60,12 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function SignInSide() {
+  const dispatch = useDispatch();
+  const history = useHistory();
+  const loading = useSelector((state) => state.user.loading);
   const classes = useStyles();
-
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   return (
     <Grid container component="main" className={classes.root}>
       <CssBaseline />
@@ -82,6 +89,8 @@ export default function SignInSide() {
               name="email"
               autoComplete="email"
               autoFocus
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
             />
             <TextField
               variant="outlined"
@@ -93,10 +102,51 @@ export default function SignInSide() {
               type="password"
               id="password"
               autoComplete="current-password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
             />
             <FormControlLabel control={<Checkbox value="remember" color="primary" />} label="Remember me" />
-            <Button type="submit" fullWidth variant="contained" color="primary" className={classes.submit}>
+            <Button
+              disabled={loading}
+              type="submit"
+              fullWidth
+              variant="contained"
+              color="primary"
+              className={classes.submit}
+              onClick={async (e) => {
+                e.preventDefault();
+                const userLoading = {
+                  type: "SET_USER_LOADING",
+                  payload: { loading: true },
+                };
+                dispatch(userLoading);
+                const url = `/api/user`;
+                const payload = {
+                  email,
+                  password,
+                };
+                const result = await fetch(url, {
+                  method: "POST",
+                  headers: {
+                    "Content-Type": "application/json",
+                  },
+                  body: JSON.stringify(payload),
+                });
+                const data = await result.json();
+                const userAction = {
+                  type: "SET_USER",
+                  payload: { user: data.user },
+                };
+                dispatch(userAction);
+                history.push("/");
+              }}
+            >
               Sign In
+              {loading && (
+                <span style={{ marginLeft: "15px" }}>
+                  <CircularLoading />
+                </span>
+              )}
             </Button>
             <Grid container>
               <Grid item xs>
@@ -105,7 +155,7 @@ export default function SignInSide() {
                 </Link>
               </Grid>
               <Grid item>
-                <Link href="#" variant="body2">
+                <Link href="/signup" variant="body2">
                   {"Don't have an account? Sign Up"}
                 </Link>
               </Grid>

@@ -18,6 +18,13 @@ const userReducer = (state = initialState, action) => {
         loading: false,
       };
     }
+    case "SIGNOUT_USER": {
+      return {
+        ...state,
+        loading: false,
+        user: null,
+      };
+    }
     default: {
       return state;
     }
