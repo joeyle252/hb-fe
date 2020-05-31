@@ -38,11 +38,12 @@ export default function HotelList() {
               <Card.Img
                 variant="top"
                 style={{
+                  objectFit: "cover",
                   height: "250px",
                   width: "300px",
                   justifyItems: "center",
                 }}
-                src="https://q-cf.bstatic.com/images/hotel/max1024x768/211/211332081.jpg"
+                src={hotel.photos[0]}
               />
               <Card.Body>
                 <Card.Title>{hotel.name}</Card.Title>

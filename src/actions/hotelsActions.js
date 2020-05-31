@@ -15,7 +15,7 @@ const buildUrl = (state) => {
       qs += `${idx === 0 ? "" : "&"}${field.key}=${field.value}`;
     }
   });
-  const url = `/api/hotels?${qs}`;
+  const url = `${process.env.REACT_APP_BASE_API_URL}/hotels?${qs}`;
   return url;
 };
 

@@ -5,7 +5,7 @@ export const fetchHotelDetail = (hotelId) => {
       payload: { loading: true },
     };
     dispatch(loadingAction);
-    const url = `/api/hotel/${hotelId}`;
+    const url = `${process.env.REACT_APP_BASE_API_URL}/hotel/${hotelId}`;
     const result = await fetch(url);
     const data = await result.json();
     const hotelDetailAction = {
