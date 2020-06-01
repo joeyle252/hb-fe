@@ -6,7 +6,7 @@ import { useDispatch } from "react-redux";
 
 export default function ComboBox(props) {
   const dispatch = useDispatch();
-  const handleDestinationChange = (value) => {
+  const handleDestinationChange = (e, value) => {
     const action = {
       type: "SET_DESTINATION",
       payload: { destination: value ? value.title : null },
@@ -43,5 +43,5 @@ const destinations = [
   { title: "Phu Quoc" },
   { title: "Quy Nhon" },
   { title: "Hoi An" },
-  { title: "Vinh Ha Long" },
+  { title: "Ha Noi" },
 ];

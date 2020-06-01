@@ -4,11 +4,9 @@ import Search from "../../components/Search/Search";
 import Filters from "../../components/Filters/Filters";
 import HotelList from "../../components/HotelList/HotelList";
 import PaginationOutLined from "../../components/Pagination/Pagination";
-import "./HotelListPage.css"
-
+import "./HotelListPage.css";
 
 export default function HotelListPage() {
-
   return (
     <div>
       <div className="container">
@@ -25,7 +23,7 @@ export default function HotelListPage() {
           <HotelList />
         </div>
       </div>
-      <div className="pagination" style={{justifyContent:"center"}}>
+      <div className="pagination" style={{ justifyContent: "center" }}>
         <PaginationOutLined />
       </div>
     </div>

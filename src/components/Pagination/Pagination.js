@@ -1,22 +1,32 @@
+import React, { useState } from "react";
+import Pagination from "react-js-pagination";
 
-import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import Pagination from '@material-ui/lab/Pagination';
+export default function PaginationOutLined() {
+  let [page, setPage] = useState(1);
+  let [hotelList, setHotelList] = useState([]);
+  let handlePageChange = async (pageNumber) => {
+    console.log(`active page is ${pageNumber}`);
+    setPage(pageNumber);
+    let url = `${process.env.REACT_APP_BASE_API_URL}/hotels`;
+    let data = await fetch(url);
+    console.log("data", data);
+    let dataResults = await data.json();
+    console.log("data", dataResults);
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    '& > *': {
-      marginTop: theme.spacing(2),
-    },
-  },
-}));
-
-export default function PaginationOutlined() {
-  const classes = useStyles();
-
+    setHotelList(dataResults.hotels);
+  };
   return (
-    <div className={classes.root}>
-      <Pagination count={10} variant="outlined" color="primary" />
+    <div className="pagination">
+      <Pagination
+        activePage={page}
+        itemsCountPerPage={8}
+        totalItemsCount={32}
+        pageRangeDisplayed={4}
+        onChange={handlePageChange}
+        itemClass="page-item"
+        linkClass="page-link"
+        value={hotelList}
+      />
     </div>
   );
 }
