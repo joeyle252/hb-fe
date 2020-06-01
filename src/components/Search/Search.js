@@ -65,82 +65,89 @@ export default function MaterialUIPickers() {
   };
 
   return (
-    <div className="container-search">
-      <div style={{ display: "flex", flexDirection: "column" }}>
-        <p style={{ display: "flex", justifyContent: "center" }}>HOTEL, RESORT AND MORE THAN THAT</p>
-        <p style={{ display: "flex", justifyContent: "center" }}>
-          Receive the best rate for over thousands hotel all over the world
-        </p>
+    <>
+      <div className="container-search">
+        {/* <video autoPlay loop muted>
+          <source type="video/mp4" src="https://tinyurl.com/y5x5jmnf" />
+          <source type="video/webm" src="https://tinyurl.com/y6q5jxr6" />
+        </video> */}
+
+        <div style={{ display: "flex", flexDirection: "column" }}>
+          <p style={{ display: "flex", justifyContent: "center" }}>HOTEL, RESORT AND MORE THAN THAT</p>
+          <p style={{ display: "flex", justifyContent: "center" }}>
+            Receive the best rate for over thousands hotel all over the world
+          </p>
+        </div>
+        <MuiPickersUtilsProvider utils={DateFnsUtils}>
+          <Grid container flex="true" direction="column" justify="space-around" alignItems="center">
+            <ComboBox
+              id="standard-basic"
+              label="Destination"
+              //value={destination}
+              getOptionLabel={(option) => option.title}
+              errorMessage={errors.destination}
+            />
+            <div inline="true">
+              <KeyboardDatePicker
+                error={errors.checkIn}
+                helperText={errors.checkIn}
+                required
+                disableToolbar
+                variant="inline"
+                format="MM/dd/yyyy"
+                margin="normal"
+                id="date-picker-inline"
+                label="Check in"
+                name="checkin"
+                value={checkIn}
+                onChange={handleCheckinDateChange}
+                KeyboardButtonProps={{
+                  "aria-label": "change date",
+                }}
+              />
+              <KeyboardDatePicker
+                error={errors.checkOut}
+                helperText={errors.checkOut}
+                required
+                disableToolbar
+                variant="inline"
+                format="MM/dd/yyyy"
+                margin="normal"
+                id="date-picker-inline"
+                label="Check out"
+                name="checkin"
+                value={checkOut}
+                onChange={handleCheckoutDateChange}
+                KeyboardButtonProps={{
+                  "aria-label": "change date",
+                }}
+              />
+            </div>
+            <div inline="true">
+              <TextField
+                error={errors.roomQuantity}
+                helperText={errors.roomQuantity}
+                required
+                id="standard-number"
+                type="number"
+                label="Number of room"
+                value={roomQuantity}
+                onChange={handleRoomQuantityChange}
+              />
+              <Button
+                onClick={onSearchClick}
+                margin="normal"
+                variant="contained"
+                color="primary"
+                disableElevation
+                style={{ width: "230px", marginTop: "6%" }}
+              >
+                Search
+              </Button>
+            </div>
+          </Grid>
+        </MuiPickersUtilsProvider>
       </div>
-      <MuiPickersUtilsProvider utils={DateFnsUtils}>
-        <Grid container flex="true" direction="column" justify="space-around" alignItems="center">
-          <ComboBox
-            id="standard-basic"
-            label="Destination"
-            //value={destination}
-            getOptionLabel={(option) => option.title}
-            errorMessage={errors.destination}
-          />
-          <div inline="true">
-            <KeyboardDatePicker
-              error={errors.checkIn}
-              helperText={errors.checkIn}
-              required
-              disableToolbar
-              variant="inline"
-              format="MM/dd/yyyy"
-              margin="normal"
-              id="date-picker-inline"
-              label="Check in"
-              name="checkin"
-              value={checkIn}
-              onChange={handleCheckinDateChange}
-              KeyboardButtonProps={{
-                "aria-label": "change date",
-              }}
-            />
-            <KeyboardDatePicker
-              error={errors.checkOut}
-              helperText={errors.checkOut}
-              required
-              disableToolbar
-              variant="inline"
-              format="MM/dd/yyyy"
-              margin="normal"
-              id="date-picker-inline"
-              label="Check out"
-              name="checkin"
-              value={checkOut}
-              onChange={handleCheckoutDateChange}
-              KeyboardButtonProps={{
-                "aria-label": "change date",
-              }}
-            />
-          </div>
-          <div inline="true">
-            <TextField
-              error={errors.roomQuantity}
-              helperText={errors.roomQuantity}
-              required
-              id="standard-number"
-              type="number"
-              label="Number of room"
-              value={roomQuantity}
-              onChange={handleRoomQuantityChange}
-            />
-            <Button
-              onClick={onSearchClick}
-              margin="normal"
-              variant="contained"
-              color="primary"
-              disableElevation
-              style={{ width: "230px", marginTop: "6%" }}
-            >
-              Search
-            </Button>
-          </div>
-        </Grid>
-      </MuiPickersUtilsProvider>
-    </div>
+    </>
   );
 }

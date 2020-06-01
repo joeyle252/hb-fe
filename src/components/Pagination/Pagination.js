@@ -1,20 +1,20 @@
 import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import Pagination from "react-js-pagination";
+import {fetchHotels} from "../../actions/hotelsActions";
 
 export default function PaginationOutLined() {
-  let [page, setPage] = useState(1);
-  let [hotelList, setHotelList] = useState([]);
-  let handlePageChange = async (pageNumber) => {
-    console.log(`active page is ${pageNumber}`);
-    setPage(pageNumber);
-    let url = `${process.env.REACT_APP_BASE_API_URL}/hotels`;
-    let data = await fetch(url);
-    console.log("data", data);
-    let dataResults = await data.json();
-    console.log("data", dataResults);
-
-    setHotelList(dataResults.hotels);
+  const page = useSelector((state) => state.pagination.page);
+  const dispatch = useDispatch();
+  let handlePageChange = async (page) => {
+    const pageAction = {
+      type: "SET_PAGE",
+      payload: { page: page },
+    };
+    dispatch(pageAction);
+    dispatch(fetchHotels);
   };
+
   return (
     <div className="pagination">
       <Pagination
@@ -25,7 +25,6 @@ export default function PaginationOutLined() {
         onChange={handlePageChange}
         itemClass="page-item"
         linkClass="page-link"
-        value={hotelList}
       />
     </div>
   );

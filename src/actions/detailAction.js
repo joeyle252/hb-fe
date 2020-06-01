@@ -8,10 +8,12 @@ export const fetchHotelDetail = (hotelId) => {
     const url = `${process.env.REACT_APP_BASE_API_URL}/hotel/${hotelId}`;
     const result = await fetch(url);
     const data = await result.json();
+
     const hotelDetailAction = {
       type: "SET_DETAIL_HOTEL",
       payload: { hotel: data.hotel },
     };
+    debugger;
     dispatch(hotelDetailAction);
   };
 };
