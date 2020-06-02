@@ -22,7 +22,7 @@ import getRoomNight from "../../utils/getRoomNight";
 export default function BookingForm(props) {
   const availableRooms = useSelector((state) => state.detail.hotel && state.detail.hotel.availableRooms);
   // if state.detail.hotel null => return null otherwise return state.detail.hotel.availablerooms
-  const roomType = [{ title: "Standard" }, { title: "Deluxe" }];
+  //const roomType = [{ title: "Standard" }, { title: "Deluxe" }];
 
   const {
     firstName,
@@ -172,17 +172,17 @@ export default function BookingForm(props) {
                         <Select
                           labelId="demo-simple-select-label"
                           id="demo-simple-select"
-                          value={selectedRooms[room.type]}
+                          value={selectedRooms[room.type.toLowerCase()]}
                           onChange={(e) => {
                             setSelectedRooms(() => {
                               return {
                                 ...selectedRooms,
-                                [room.type]: e.target.value,
+                                [room.type.toLowerCase()]: e.target.value,
                               };
                             });
                           }}
                         >
-                          {[...Array(room.quantity + 1).keys()].map((num) => {
+                          {[...Array(room.roomQuantity + 1).keys()].map((num) => {
                             return (
                               <MenuItem key={num} value={num}>
                                 {num}

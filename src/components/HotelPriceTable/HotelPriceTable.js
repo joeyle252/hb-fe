@@ -34,7 +34,7 @@ export default function HotelPriceTable() {
               <TableCell component="th" scope="row">
                 {room.type}
               </TableCell>
-              <TableCell align="right">{room.quantity}</TableCell>
+              <TableCell align="right">{room.roomQuantity}</TableCell>
               <TableCell align="right">{room.price}</TableCell>
             </TableRow>
           ))}

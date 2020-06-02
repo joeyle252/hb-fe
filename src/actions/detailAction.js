@@ -13,7 +13,6 @@ export const fetchHotelDetail = (hotelId) => {
       type: "SET_DETAIL_HOTEL",
       payload: { hotel: data.hotel },
     };
-    debugger;
     dispatch(hotelDetailAction);
   };
 };

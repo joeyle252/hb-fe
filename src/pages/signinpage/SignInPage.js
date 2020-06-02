@@ -120,7 +120,7 @@ export default function SignInSide() {
                   payload: { loading: true },
                 };
                 dispatch(userLoading);
-                const url = `${process.env.REACT_APP_BASE_API_URL}/user`;
+                const url = `${process.env.REACT_APP_BASE_API_URL}/auth/login`;
                 const payload = {
                   email,
                   password,
