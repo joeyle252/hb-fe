@@ -1,6 +1,6 @@
 const initialState = {
   starRating: [2, 3, 4, 5],
-  priceMaximum: 100,
+  priceMaximum: 5,
 };
 const filtersReducer = (state = initialState, action) => {
   switch (action.type) {

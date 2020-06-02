@@ -171,7 +171,6 @@ export default function SignUpSide() {
                   type: "SET_USER",
                   payload: { user: data.user },
                 };
-                debugger;
                 dispatch(userAction);
                 history.push("/");
               }}

@@ -84,7 +84,7 @@ const IOSSlider = withStyles({
 
 const marks = [
   { value: 1, label: "1" },
-  { value: 100, label: "100" },
+  { value: 5, label: "5" },
 ];
 
 export default function CustomizedSlider(props) {
@@ -97,9 +97,9 @@ export default function CustomizedSlider(props) {
         onChangeCommitted={props.onChange}
         marks={marks}
         min={1}
-        max={100}
+        max={5}
         aria-label="ios slider"
-        defaultValue={100}
+        defaultValue={5}
         valueLabelDisplay="on"
       />
     </div>

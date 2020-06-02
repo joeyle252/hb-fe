@@ -137,6 +137,7 @@ export default function SignInSide() {
                   type: "SET_USER",
                   payload: { user: data.user },
                 };
+
                 dispatch(userAction);
                 history.push("/");
               }}
