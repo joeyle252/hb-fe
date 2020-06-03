@@ -6,7 +6,7 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 import HotelListPage from "./pages/HotelListPage/HotelListPage";
 import SignUpPage from "./pages/signuppage/SignUpPage";
 import SignInPage from "./pages/signinpage/SignInPage";
-import HotelDetail from "./pages/HotelDetail/HotelDetail";
+import HotelDetail from "./pages/HotelDetail/HotelDetail.js";
 import BookRoom from "./pages/BookRoom/BookRoom";
 import { Provider } from "react-redux";
 import { createStore, applyMiddleware, compose } from "redux";
