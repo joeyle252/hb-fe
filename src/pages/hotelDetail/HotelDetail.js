@@ -1,6 +1,6 @@
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import React, { useEffect } from "./node_modules/react";
+import { useDispatch, useSelector } from "./node_modules/react-redux";
+import { useParams } from "./node_modules/react-router-dom";
 import HotelImageCarousel from "../../components/HotelImageCarousel/HotelImageCarousel";
 import Navbar from "../../components/Navbar/Navbar";
 import DetailSidebar from "../../components/DetailSidebar/DetailSidebar";
