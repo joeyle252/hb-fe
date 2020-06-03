@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useSelector } from "react-redux";
 import { makeStyles } from "@material-ui/core/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import AppBar from "@material-ui/core/AppBar";
@@ -13,6 +14,8 @@ import Typography from "@material-ui/core/Typography";
 import BookingForm from "../../components/BookingForm/BookingForm";
 import PaymentForm from "../../components/PaymentForm/PaymentForm";
 import Review from "../../components/Review/Review";
+import getRoomNight from "../../utils/getRoomNight";
+import getTotalPrice from "../../utils/getTotalPrice";
 
 function Copyright() {
   return (
@@ -64,6 +67,9 @@ const useStyles = makeStyles((theme) => ({
 const steps = ["Make reservation", "Payment details", "Review your order"];
 
 export default function BookRoom() {
+  const detail = useSelector((state) => state.detail);
+  const userId = useSelector((state) => state.user.user._id);
+  const hotelId = useSelector((state) => state.detail.hotel.id);
   const classes = useStyles();
   const [activeStep, setActiveStep] = useState(0);
   const [firstName, setFirstName] = useState("");
@@ -139,7 +145,39 @@ export default function BookRoom() {
     }
   }
 
-  const handleNext = () => {
+  const handleNext = async () => {
+    if (activeStep === steps.length - 1) {
+      const payload = {
+        creatorId: userId,
+        hotelId: hotelId,
+        checkIn: checkIn,
+        checkOut: checkOut,
+        totalPrice: getTotalPrice(getRoomNight(checkIn, checkOut), detail, selectedRooms),
+        guestInformation: {
+          firstName,
+          lastName,
+          address,
+          email,
+          phoneNumber,
+        },
+        selectedRooms: selectedRooms,
+        cc_number: cardNumber,
+        cc_exp_month: expiryDate.getMonth() + 1,
+        cc_exp_year: expiryDate.getFullYear(),
+        cc_cvc: cvv,
+      };
+      const url = `${process.env.REACT_APP_BASE_API_URL}/booking`;
+      const result = await fetch(url, {
+        method: "POST",
+        body: JSON.stringify(payload),
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+      });
+      const data = await result.json();
+      debugger;
+    }
     setActiveStep(activeStep + 1);
   };
 
