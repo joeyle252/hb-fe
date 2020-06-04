@@ -23,9 +23,13 @@ export default function HotelPriceTable() {
       <Table className={classes.table} aria-label="simple table">
         <TableHead>
           <TableRow>
-            <TableCell>Room Type</TableCell>
-            <TableCell align="right">Room Available</TableCell>
-            <TableCell align="right">Room Price</TableCell>
+            <TableCell style={{ fontweight: "bold", fontSize: "20px" }}>Room Type</TableCell>
+            <TableCell align="right" style={{ fontweight: "bold", fontSize: "20px" }}>
+              Room Available
+            </TableCell>
+            <TableCell align="right" style={{ fontweight: "bold", fontSize: "20px" }}>
+              Room Price
+            </TableCell>
           </TableRow>
         </TableHead>
         <TableBody>

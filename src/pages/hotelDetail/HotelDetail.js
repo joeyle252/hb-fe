@@ -21,31 +21,45 @@ export default function HotelDetail() {
   }, []);
 
   return (
-    <div className="detail-container bs-container">
-      <div className="detail-navbar">
-        <Navbar />
-      </div>
-      <div className="detail-sidebar">{loading ? "loading..." : hotel && <DetailSidebar />}</div>
-      <div className="detail-content">
-        {loading
-          ? "loading ..."
-          : hotel && (
-              <>
-                <div style={{ display: "flex", flexDirection: "row" }}>
-                  <div style={{ flex: "1" }}>
-                    <p> hotel name: {hotel.name} </p>
-                    <p> address: {hotel.address}</p>
+    <div className="detailpage-container">
+      <div className="detail-container bs-container">
+        <div className="detail-navbar">
+          <Navbar />
+        </div>
+        <div className="detail-sidebar">{loading ? "loading..." : hotel && <DetailSidebar />}</div>
+        <div className="detail-content">
+          {loading
+            ? "loading ..."
+            : hotel && (
+                <>
+                  <div style={{ display: "flex", flexDirection: "row" }}>
+                    <div style={{ flex: "1" }}>
+                      <p>
+                        <span style={{ fontWeight: "bold", fontSize: "20px" }}>Hotel name:</span> {hotel.name}
+                      </p>
+                      <p>
+                        <span style={{ fontWeight: "bold", fontSize: "20px" }} s>
+                          Address:
+                        </span>
+                        {hotel.address}
+                      </p>
+                    </div>
+                    <div style={{ flex: "1" }}>
+                      <p>
+                        <span style={{ fontWeight: "bold", fontSize: "20px" }}> Star Rating:</span> {hotel.starRating}
+                      </p>
+                      <p>
+                        <span style={{ fontWeight: "bold", fontSize: "20px" }}>Price:</span>
+                        {hotel.availableRooms[0].price}
+                      </p>
+                    </div>
                   </div>
-                  <div style={{ flex: "1" }}>
-                    <p> Star rating: {hotel.starRating} </p>
-                    <p>Price: {hotel.availableRooms[0].price}</p>
-                  </div>
-                </div>
-                <HotelImageCarousel />
-                <HotelPriceTable />
-                <BookReservationButton />
-              </>
-            )}
+                  <HotelImageCarousel />
+                  <HotelPriceTable />
+                  <BookReservationButton />
+                </>
+              )}
+        </div>
       </div>
     </div>
   );

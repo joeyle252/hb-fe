@@ -67,14 +67,11 @@ export default function MaterialUIPickers() {
   return (
     <>
       <div className="container-search">
-        {/* <video autoPlay loop muted>
-          <source type="video/mp4" src="https://tinyurl.com/y5x5jmnf" />
-          <source type="video/webm" src="https://tinyurl.com/y6q5jxr6" />
-        </video> */}
-
         <div style={{ display: "flex", flexDirection: "column" }}>
-          <p style={{ display: "flex", justifyContent: "center" }}>HOTEL, RESORT AND MORE THAN THAT</p>
-          <p style={{ display: "flex", justifyContent: "center" }}>
+          <p style={{ display: "flex", justifyContent: "center", fontWeight: "bold" }}>
+            HOTEL, RESORT AND MORE THAN THAT
+          </p>
+          <p style={{ display: "flex", justifyContent: "center", font: "italic" }}>
             Receive the best rate for over thousands hotel all over the world
           </p>
         </div>
@@ -125,6 +122,7 @@ export default function MaterialUIPickers() {
             </div>
             <div inline="true">
               <TextField
+                margin="normal"
                 error={errors.roomQuantity}
                 helperText={errors.roomQuantity}
                 required

@@ -1,0 +1,28 @@
+.bookRoomButton {
+  padding: 15px 15px;
+  font-size: 15px;
+  cursor: pointer;
+
+  margin-left: auto;
+  margin-right: auto;
+  justify-content: center;
+
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: blue;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 9px #999;
+}
+
+.bookRoomButton:hover {
+  background-color: #58257b;
+}
+
+.bookRoomButton:active {
+  background-color: #58257b;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}

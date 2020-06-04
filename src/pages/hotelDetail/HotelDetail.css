@@ -1,5 +1,5 @@
 .detail-container {
-  border: 1px solid red;
+  border: 1px solid lightblue;
   display: grid;
   grid-gap: 20px;
   grid-template-areas:
@@ -17,17 +17,17 @@
 }
 
 .detail-navbar {
-  border: 1px solid black;
+  border: 1px solid lightblue;
   grid-area: detail-navbar;
 }
 
 .detail-sidebar {
-  border: 1px solid green;
+  border: 1px solid lightblue;
   grid-area: detail-sidebar;
 }
 
 .detail-content {
-  border: 1px solid yellow;
+  border: 1px solid lightblue;
   grid-area: detail-content;
 }
 
@@ -42,4 +42,8 @@
   .bs-container {
     max-width: 1140px;
   }
+}
+
+.detailpage-container {
+  background-color: lightblue;
 }

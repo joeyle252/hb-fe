@@ -8,7 +8,7 @@ import "./HotelListPage.css";
 
 export default function HotelListPage() {
   return (
-    <div>
+    <div className="hotelList-container">
       <div className="container">
         <div className="navbar">
           <Navbar />

@@ -11,7 +11,6 @@ import Checkbox from "@material-ui/core/Checkbox";
 import Input from "@material-ui/core/Input";
 import MaskedInput from "react-text-mask";
 
-
 function TextMaskCustom(props) {
   const { inputRef, ...other } = props;
 
@@ -71,8 +70,8 @@ export default function PaymentForm(props) {
       <Typography variant="h6" gutterBottom>
         Payment method
       </Typography>
-      <Grid container spacing={3}>
-        <Grid item xs={12} md={6}>
+      <Grid inline container spacing={3}>
+        <Grid item xs={12} md={6} inline>
           <TextField
             required
             id="cardName"
@@ -87,6 +86,7 @@ export default function PaymentForm(props) {
         </Grid>
         <Grid item xs={12} md={6}>
           <Input
+            margin="normal"
             value={cardNumber}
             onChange={(e) => setCardNumber(e.target.value)}
             name="textmask"
@@ -95,7 +95,7 @@ export default function PaymentForm(props) {
           />
         </Grid>
         <MuiPickersUtilsProvider utils={DateFnsUtils}>
-          <Grid container item xs={12} sm={6}>
+          <Grid container item xs={12} sm={6} inline>
             <KeyboardDatePicker
               margin="normal"
               id="date-picker-inline"
@@ -113,6 +113,7 @@ export default function PaymentForm(props) {
         </MuiPickersUtilsProvider>
         <Grid item xs={12} md={6}>
           <Input
+            margin="normal"
             value={cvv}
             onChange={(e) => setCvv(e.target.value)}
             name="textmask"

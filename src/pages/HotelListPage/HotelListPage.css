@@ -1,5 +1,9 @@
+.hotelList-container {
+  background-color: lightblue;
+}
+
 .container {
-  /* border: 1px solid red; */
+  border: 1px solid lightblue;
   display: grid;
   grid-gap: 20px;
   grid-template-areas:
@@ -19,21 +23,22 @@
 }
 
 .navbar {
-  /* border: 1px solid black; */
   grid-area: navbar;
+  padding-left: 0px;
+  padding-right: 0px;
 }
 
 .search {
-  /* border: 1px solid blue; */
+  border: 1px solid lightblue;
   grid-area: search;
 }
 
 .filters {
-  /* border: 1px solid green; */
+  border: 1px solid lightblue;
   grid-area: filters;
 }
 
 .hotels-list {
-  /* border: 1px solid yellow; */
+  border: 1px solid lightblue;
   grid-area: hotels-list;
 }

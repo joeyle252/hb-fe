@@ -1,6 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
+import "./BookReservationButton.css";
 
 export default function BookReservationButton() {
   let history = useHistory();
@@ -13,5 +14,9 @@ export default function BookReservationButton() {
       history.push("/signin");
     }
   };
-  return <button onClick={bookRoom}> Book Room </button>;
+  return (
+    <button onClick={bookRoom} className="bookRoomButton" style={{ display: "flex", justifyContent: "center" }}>
+      Book Room
+    </button>
+  );
 }

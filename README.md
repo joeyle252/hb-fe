@@ -1,68 +1,31 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Final Project: BORO APP
 
-## Available Scripts
+### Required Features 🎯
 
-In the project directory, you can run:
+- [x] App client built using React.JS.
+- [x] App server built using NODEJS.
+- [x] App contains at least 3 animations(dissolve in/out, color change on hover).
+- [x] App implements authentication(create account, sign in, sign out).
+- [x] App implements at least 3 models/resources (user, hotel, booking)
+- [x] App is mobile responsive and can easily be used on a mobile device.
+- [x] App is deployed to production where end users can use it.
 
-### `npm start`
+### The following list is the types of pages we most often see on the web
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+1. **User registration/social login**:
+   --User can make registration with first name, last name, email and password. All guest can see the hotel information but they need to sign up or sign in to book a room
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+2. **Home page**:
+   -- User can see the list of all the hotel at the first page
+   -- They can search the hotel with check In, check out date, destination, and how many room they want to find.
+   -- They can filter the hotel depend on star rating and how much maximum they willing to pay.
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+3. **Detail Page**:
+   -- This page will show detail information of the hotel they choose.
+   -- User can book a room from this page
+4. **Make Reservation**
+   -- Step 1: User need to put all information such as: check in, check out, number of room and room type
+   -- Step 2: User need to put the payment information: card holder name, card number, expiry date of card, cvv code.
+   -- Step 3: Review all information again and confirm.
+5. **Payment**:
+   -- Online payment processing with stripe.

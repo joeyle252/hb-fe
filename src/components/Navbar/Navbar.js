@@ -24,18 +24,20 @@ export default function NavBar() {
 
   return (
     <div style={{ height: "100%", width: "100%" }}>
-      <Navbar bg="primary" variant="dark">
-        <Navbar.Brand href="#home">Hobook</Navbar.Brand>
+      <Navbar bg="primary" variant="light">
+        <Navbar.Brand href="#home" style={{ paddingLeft: "10px" }}>
+          BORO
+        </Navbar.Brand>
         <Nav className="mr-auto">
-          <Nav.Link href="#home">Home</Nav.Link>
+          <Nav.Link href="#">Travel's Information</Nav.Link>
           <Nav.Link href="#features"></Nav.Link>
           <Nav.Link href="https://www.vietnamairlines.com/vn/vi/home" target="_blank">
             Flights
           </Nav.Link>
         </Nav>
-        <Form inline>
+        <Form inline style={{ paddingRight: "10px" }}>
           {isUserLoggedIn ? (
-            <Button variant="outline-light" onClick={signOut}>
+            <Button variant="light" onClick={signOut}>
               Sign Out
             </Button>
           ) : (

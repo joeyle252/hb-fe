@@ -10,18 +10,8 @@ export default function HotelList() {
   const loading = useSelector((state) => state.hotels.loading);
   const hotels = useSelector((state) => state.hotels.hotels);
 
-  //const [hotels, setHotels] = useState([]);
-  //const [loading, setLoading] = useState(false);
-
   let history = useHistory();
 
-  // const fetchHotels = async () => {
-  //   setLoading(true);
-  //   const result = await fetch("/api/hotels");
-  //   const data = await result.json(); // {hotels: []}
-  //   setHotels(data.hotels);
-  //   setLoading(false);
-  // };
   useEffect(() => {
     dispatch(fetchHotels);
   }, []);

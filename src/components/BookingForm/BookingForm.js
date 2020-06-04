@@ -150,7 +150,7 @@ export default function BookingForm(props) {
               />
             </Grid>
             <Grid item xs={12} sm={4}>
-              <TextField label="Room night" fullWidth value={getRoomNight(checkIn, checkOut)} />
+              <TextField margin="normal" label="Room night" fullWidth value={getRoomNight(checkIn, checkOut)} />
             </Grid>
           </Grid>
           <TableContainer component={Paper}>
