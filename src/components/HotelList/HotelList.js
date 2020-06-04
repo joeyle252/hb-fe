@@ -4,6 +4,7 @@ import { Card, Button } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchHotels } from "../../actions/hotelsActions";
 import "./hotelList.css";
+import getRandomPhoto from "../../utils/getRandomPhoto";
 
 export default function HotelList() {
   const dispatch = useDispatch();
@@ -33,7 +34,7 @@ export default function HotelList() {
                   width: "300px",
                   justifyItems: "center",
                 }}
-                src={hotel.photos[0]}
+                src={getRandomPhoto()}
               />
               <Card.Body>
                 <Card.Title>{hotel.name}</Card.Title>
