@@ -2,6 +2,7 @@ import React from "react";
 import { useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { Button, Nav, Form, Navbar } from "react-bootstrap";
+import "./navbar.css";
 
 export default function NavBar() {
   const dispatch = useDispatch();

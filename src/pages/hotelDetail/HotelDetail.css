@@ -7,7 +7,7 @@
     "detail-sidebar"
     "detail-content";
 }
-@media (min-width: 700px) {
+@media (min-width: 1100px) {
   .detail-container {
     grid-template-columns: 1fr 4fr;
     grid-template-areas:
@@ -38,7 +38,7 @@
   margin-right: auto;
   margin-left: auto;
 }
-@media (min-width: 1200px) {
+@media (min-width: 1100px) {
   .bs-container {
     max-width: 1140px;
   }
@@ -47,3 +47,4 @@
 .detailpage-container {
   background-color: lightblue;
 }
+

@@ -12,7 +12,7 @@
     "filters"
     "hotels-list";
 }
-@media (min-width: 700px) {
+@media (min-width: 1100px) {
   .container {
     grid-template-columns: 1fr 4fr;
     grid-template-areas:
@@ -41,4 +41,16 @@
 .hotels-list {
   border: 1px solid lightblue;
   grid-area: hotels-list;
+}
+
+ul > .card {
+  margin-bottom: 15px;
+}
+
+.card {
+  align-items: center;
+}
+.card-img-top {
+  padding: 1.25rem;
+  padding-right: 0;
 }

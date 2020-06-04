@@ -1,0 +1,11 @@
+.nav-link {
+  color: white !important;
+}
+
+.navbar-brand {
+  color: white !important;
+}
+
+.navbar > .form-inline > * {
+  margin: 5px;
+}
